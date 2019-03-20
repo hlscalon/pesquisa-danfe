@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Pesquisa XML Danfe",
+  "name": "App para fazer pesquisas em XMLs de Notas Fiscais Eletrônicas",
   "icons": [
     {
       "src": "favicon.ico",

@@ -1,28 +1,38 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import Upload from './upload/Upload.js';
 import './App.css';
 
 class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            danfes: []
+        };
+
+        this.addDanfe = this.addDanfe.bind(this);
+    }
+
+    addDanfe(danfe) {
+        this.setState(prevState => ({
+            danfes: [...prevState.danfes, danfe]
+        }));
+    }
+
+    render() {
+        return (
+            <div className="App">
+                <Upload addDanfe={this.addDanfe} />
+                <ul className="list-group list-group-flush">
+                {this.state.danfes.map(danfe =>
+                    <li key={danfe.chNFe} className="list-group-item flex-container">
+                        <p>{danfe.emit.xNome}</p><span>|</span><p>{danfe.dest.xNome}</p>
+                    </li>
+                )}
+                </ul>
+            </div>
+        );
+    }
 }
 
 export default App;
