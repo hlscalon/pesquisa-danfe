@@ -74,7 +74,17 @@ class Upload extends Component {
 
     renderActions() {
         return (
-            <input type="file" id="upload" multiple disabled={this.state.uploading} onChange={this.uploadFiles} />
+            <div className="file is-boxed">
+                <label className="file-label">
+                    <input className="file-input" type="file" id="upload" multiple disabled={this.state.uploading} onChange={this.uploadFiles} />
+                    <span className="file-cta">
+                        <span className="file-icon">
+                            <i className="fas fa-upload"></i>
+                        </span>
+                        <span className="file-label">Escolha arquivos de XMLs de Danfes</span>
+                    </span>
+                </label>
+            </div>
         );
     }
 
