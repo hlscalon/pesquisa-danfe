@@ -1,15 +1,21 @@
 import React, { Component } from 'react';
 import Upload from './upload/Upload.js';
+import Dashboard from './dashboard/Dashboard.js';
+
+// css
 import 'bulma/css/bulma.min.css';
-import '@fortawesome/fontawesome-free/css/fontawesome.min.css';
-import '@fortawesome/fontawesome-free/css/solid.css';
 
 class App extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            danfes: []
+            danfes: [],
+            campos: {
+                "chNFe": {nome: "chNFe", descricao: "Chave NFe", ativo: true},
+                "emit.xNome": {nome: "emit.xNome", descricao: "Emissor", ativo: false},
+                "dest.xNome": {nome: "dest.xNome", descricao: "Destinatário", ativo: true}
+            }
         };
 
         this.addDanfe = this.addDanfe.bind(this);
@@ -27,22 +33,7 @@ class App extends Component {
                 <div className="container">
                     <h1 className="title">Pesquisa em Danfes!</h1>
                     <Upload addDanfe={this.addDanfe} /><br />
-                    <table className="table is-bordered is-fullwidth">
-                        <thead>
-                            <th campo="chNFe">Chave NFe</th>
-                            <th campo="emit.xNome">Emissor</th>
-                            <th campo="dest.xNome">Destinatário</th>
-                        </thead>
-                        <tbody>
-                        {this.state.danfes.map(danfe =>
-                            <tr>
-                                <td campo="chNFe">{danfe.chNFe}</td>
-                                <td campo="emit.xNome">{danfe.emit.xNome}</td>
-                                <td campo="dest.xNome">{danfe.dest.xNome}</td>
-                            </tr>
-                        )}
-                        </tbody>
-                    </table>
+                    <Dashboard danfes={this.state.danfes} campos={this.state.campos} />
                 </div>
             </section>
         );

@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import '@fortawesome/fontawesome-free/css/fontawesome.min.css';
+import '@fortawesome/fontawesome-free/css/solid.css';
 
 class Upload extends Component {
     constructor(props) {
@@ -27,12 +29,8 @@ class Upload extends Component {
 
             let danfe = {
                 chNFe: infProt.getElementsByTagName("chNFe")[0].childNodes[0].nodeValue,
-                emit: {
-                    xNome: infNFe.getElementsByTagName("emit")[0].getElementsByTagName("xNome")[0].childNodes[0].nodeValue
-                },
-                dest: {
-                    xNome: infNFe.getElementsByTagName("dest")[0].getElementsByTagName("xNome")[0].childNodes[0].nodeValue
-                }
+                "emit.xNome": infNFe.getElementsByTagName("emit")[0].getElementsByTagName("xNome")[0].childNodes[0].nodeValue,
+                "dest.xNome": infNFe.getElementsByTagName("dest")[0].getElementsByTagName("xNome")[0].childNodes[0].nodeValue
             };
 
             this.props.addDanfe(danfe);
@@ -81,7 +79,7 @@ class Upload extends Component {
                         <span className="file-icon">
                             <i className="fas fa-upload"></i>
                         </span>
-                        <span className="file-label">Escolha arquivos de XMLs de Danfes</span>
+                        <span className="file-label">Insira os XMLs</span>
                     </span>
                 </label>
             </div>
