@@ -22,9 +22,21 @@ class App extends Component {
     }
 
     addDanfe(danfe) {
-        this.setState(prevState => ({
-            danfes: [...prevState.danfes, danfe]
-        }));
+        let add = true;
+        let danfes = this.state.danfes;
+        for (var i = 0; i < danfes.length; i++) {
+            let d = danfes[i];
+            if (d.chNFe === danfe.chNFe) {
+                add = false;
+                break;
+            }
+        }
+
+        if (add) {
+            this.setState(prevState => ({
+                danfes: [...prevState.danfes, danfe]
+            }));
+        }
     }
 
     render() {
