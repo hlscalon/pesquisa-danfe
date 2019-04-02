@@ -8,7 +8,7 @@ class Dashboard extends Component {
         let danfesList = "";
         this.props.danfes.map(danfe => {
             danfesList += "<tr>";
-            nomeCampos.map((key, i) => {
+            nomeCampos.map(key => {
                 const campo = campos[key];
                 if (campo.ativo) {
                     danfesList += "<td campo=" + campo.nome + ">" + danfe[campo.nome] + "</td>";
@@ -26,7 +26,7 @@ class Dashboard extends Component {
                 <thead>
                     <tr>
                     {
-                        nomeCampos.map((key, i) => {
+                        nomeCampos.map(key => {
                             const campo = campos[key];
                             if (campo.ativo) {
                                 return <th key={campo.nome} campo={campo.nome}>{campo.descricao}</th>

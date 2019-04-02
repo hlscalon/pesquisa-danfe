@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Upload from './upload/Upload.js';
 import Dashboard from './dashboard/Dashboard.js';
+import FiltroCampos from './filtros/FiltroCampos.js';
 
 // css
 import 'bulma/css/bulma.min.css';
@@ -19,6 +20,7 @@ class App extends Component {
         };
 
         this.addDanfe = this.addDanfe.bind(this);
+        this.changeFiltroCampo = this.changeFiltroCampo.bind(this);
     }
 
     addDanfe(danfe) {
@@ -39,12 +41,27 @@ class App extends Component {
         }
     }
 
+    changeFiltroCampo(campo) {
+        if (typeof this.state.campos[campo] !== "undefined") {
+            // shallow copy dos campos
+            let campos = {...this.state.campos};
+            // shallow copy do campo
+            let c = {...campos[campo]};
+            // altera o valor e coloca no objeto de volta
+            c.ativo = !c.ativo;
+            campos[campo] = c;
+            // altera o state com o campo novo
+            this.setState({campos});
+        }
+    }
+
     render() {
         return (
             <section className="section">
                 <div className="container">
                     <h1 className="title">Pesquisa em Danfes!</h1>
                     <Upload addDanfe={this.addDanfe} /><br />
+                    <FiltroCampos campos={this.state.campos} change={this.changeFiltroCampo} />
                     <Dashboard danfes={this.state.danfes} campos={this.state.campos} />
                 </div>
             </section>
